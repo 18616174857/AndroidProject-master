@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App 样式中引用的颜色 -->
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/black</color>
+    <color name="colorAccent">#5A8DDF</color>
+    <color name="windowBackground">#F4F4F4</color>
+    <color name="textColor">#333333</color>
+    <color name="textColorHint">#757575</color>
+
+    <!-- 按钮按压时的颜色 -->
+    <color name="colorButtonPressed">#1976D2</color>
+    <!-- 按钮禁用时的颜色 -->
+    <color name="colorButtonDisable">#BBBBBB</color>
+    <!-- 分割线的颜色 -->
+    <color name="colorLine">#ECECEC</color>
+
+    <!-- 对话框确认按钮文本颜色 -->
+    <color name="colorConfirm">#007AFF</color>
+    <!-- 对话框取消按钮文本颜色 -->
+    <color name="colorCancel">#F44336</color>
+
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="main_bg_color">#F5F5F9</color>
+    <color name="divider_color">#e7e8e8</color>
+    <color name="society_grey">#B3B5B6</color>
+
+    <color name="theme_black_7f">#8f000000</color>
+    <color name="text_app_light_color">#444444</color> <!--黑亮色-->
+    <color name="text_value_blank_color">#444444</color>
+    <color name="page_bg_color">#22D0EFF2</color>
+
+
+    <color name="text_hint_color">#aaaeb5</color>
+    <color name="text_tag_blank_color">#666666</color> <!--灰色-->
+    <color name="text_tag_color_999999">#999999</color> <!--灰色-->
+    <color name="text_tag_color_393939">#393939</color>
+    <color name="text_red_light_color">#f0593d</color> <!--按钮上红色-->
+    <color name="text_green_light_color">#2cc17b</color> <!--绿色时间文字颜色-->
+    <color name="text_blue_light_color">#1b6de5</color> <!--蓝色文字颜色-->
+    <color name="text_blue_tint_color">#4DA1FF</color> <!--浅蓝色文字颜色-->
+    <color name="text_orange_light_color">#FF4800</color> <!--橙色文字颜色-->
+
+    <color name="partTranslucent">#39000000</color>
+    <color name="block_parting_bg_color">#f7f9fc</color><!--分割块颜色-->
+    <color name="tip_parting_bg_color">#F1F8FF</color><!--提示块颜色-->
+    <color name="txt_color_4a">#4a4a4a</color>
+
+
+    <!--btn startColor  and end color-->
+    <color name="btn_selector_start_color">#4DA1FF</color>
+    <color name="btn_selector_end_color">#4DC6FF</color>
+    <color name="btn_normal_start_color">#00AFFF</color>
+    <color name="btn_normal_end_color">#1477FF</color>
+    <color name="enable_btn">#dddddd</color>
+    <!--btn startColor  and end color-->
+
+
+
+    <color name="divider">#ffd2d2d2</color>
+    <!--toolbar颜色 -->
+    <color name="toolbar_color_start">#0195ff</color>
+    <color name="toolbar_color_end">#0195ff</color>
+
+    <color name="txt_color">#666666</color>
+    <color name="color_ccc">#cccccc</color>
+    <color name="txt_color_default">#DBEEFF</color>
+    <color name="step_number_color">#FDBF61</color>
+
+
+    <color name="student_data_head_title">#4A4A4A</color>
+    <color name="circle_blue">#4DA1FF</color>
+    <color name="circle_green">#87D790</color>
+    <color name="circle_yellow">#FDBF61</color>
+    <color name="line">#46cd76</color>
+
+    <color name="bg_color_blue_light">#f1f8ff</color>
+    <color name="bar_color_1">#418fff</color>
+
+
+    <color name="circle_red">#FF5452</color>
+    <color name="black_24">#24253d</color>
+
+    <array name="arc_colors">
+        <item>#5F9FFA</item>
+        <item>#4DDFFf</item>
+    </array>
+
+    <color name="check_back_color">#a6b7c7</color>
+    <color name="check_agree_color">#4ad18e</color>
+
+    <color name="red">#ff4e3c</color>
+    <color name="delete_bg_red">#ff4747</color>
+    <color name="color_fa">#fafafa</color>
+    <color name="color_added">#ff1616</color>
+    <color name="calendar_color">#FF4A4A</color>
+
+    <color name="color_ye">#ff9603</color>
+    <color name="color_blue_btn_code">#259eff</color>
+
+    <color name="btn_color_start">#39b5ff</color>
+    <color name="btn_color_end">#038aff</color>
+    <color name="color_2a">#2a2a2a</color>
+    <color name="color_list_select">#e7e8e8</color>
+    <color name="color_can_operation">#079EFF</color>
+
+    <color name="color_dim_bg">#1e000000</color>
+
+    <color name="white_50">#80FFFFFF</color>
+    <color name="color_blue">#ff0195ff</color>
+    <color name="colorline">#eeeeee</color>
+    <color name="colorT0">#000000</color>
+    <color name="colorT3">#333333</color>
+    <color name="colorT6">#666666</color>
+    <color name="colorT9">#999999</color>
+    <color name="colorBlue">#0195FF</color>
+    <color name="colorGrey">#F5FAFF</color>
+    <color name="colorGrey_99">#ff999999</color>
+    <color name="colorBlack_33">#ff333333</color>
+    <color name="colorRed_ff">#ffff4747</color>
+
+    <!--选择图片的相册的状态栏-->
+    <color name="multiple_image_select_primaryDark">#0195FF</color>
+    <color name="multiple_image_select_accent">#0195FF</color>
+    <color name="multiple_image_select_textColorPrimary">#ffffff</color>
+    <color name="multiple_image_select_textColorSecondary">#ffffff</color>
+    <!--选中图片之后toolbar的颜色-->
+    <color name="multiple_image_select_primary">#0195FF</color>
+    <color name="translucent_background">#80000000</color>
+    <color name="grayf9">#f9f9f9</color>
+    <color name="gray_gb">#dddddd</color>
+    <color name="grayc4">#c4c4c4</color>
+    <color name="graye3">#e3e7ee</color>
+    <color name="alipay">#00a5ff</color>
+    <color name="gray_e5">#e5e5e5</color>
+</resources>
