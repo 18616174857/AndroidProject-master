@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 import com.ljy.demo.BuildConfig;
+import com.ljy.demo.helper.AppFrontBackHelper;
 import com.ljy.demo.other.EventBusManager;
 import com.ljy.demo.ui.activity.CrashActivity;
 import com.ljy.demo.ui.activity.HomeActivity;
@@ -28,6 +29,7 @@ public final class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initSDK(this);
+
     }
 
     /**
@@ -84,6 +86,24 @@ public final class MyApplication extends Application {
                 // 设置监听器
                 //.eventListener(new YourCustomEventListener())
                 .apply();
+
+        //App 前后台切换监听
+        AppFrontBackHelper helper = new AppFrontBackHelper();
+        helper.register(application, new AppFrontBackHelper.OnAppStatusListener() {
+            @Override
+            public void onFront() {
+                //应用切到前台处理
+                Log.e("监听前后台操作", "APP返回前台");
+                Toast.makeText(application, "APP返回前台", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onBack() {
+                //应用切到后台处理
+                Log.e("监听前后台操作", "APP遁入后台");
+                Toast.makeText(application, "APP遁入后台", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -92,4 +112,5 @@ public final class MyApplication extends Application {
         // 使用 Dex分包
         //MultiDex.install(this);
     }
+
 }

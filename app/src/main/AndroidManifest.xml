@@ -2,25 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.ljy.demo">
-
     <!-- 外部存储读写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <!-- 拍照权限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <!-- 联网权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 访问网络状态 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 拍照权限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 联网权限 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问网络状态 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <!-- 安装包的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 安装包的权限 -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <application
-        android:name="com.ljy.demo.common.MyApplication"
+        android:name=".common.MyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,7 +21,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-
+        <activity android:name=".ui.activity.RecyclerViewActivity"></activity>
         <!-- 适配Android 7.0文件意图 -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,18 +31,14 @@
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-        </provider>
-
-        <!-- 崩溃界面 -->
+        </provider> <!-- 崩溃界面 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.CrashActivity"
+            android:name=".ui.activity.CrashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:process=":crash"
-            android:screenOrientation="portrait" />
-
-        <!-- 启动页面（因为使用了LauncherTheme，所以不要给这个Activity设置screenOrientation属性，会导致崩溃） -->
+            android:screenOrientation="portrait" /> <!-- 启动页面（因为使用了LauncherTheme，所以不要给这个Activity设置screenOrientation属性，会导致崩溃） -->
         <activity
-            android:name="com.ljy.demo.ui.activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/SplashTheme">
 
@@ -61,110 +49,78 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-
-        <!-- App 首页 -->
+        </activity> <!-- App 首页 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.HomeActivity"
+            android:name=".ui.activity.HomeActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-
-        <!-- 登录界面 -->
+            android:screenOrientation="portrait" /> <!-- 登录界面 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
-
-        <!-- 注册界面 -->
+            android:screenOrientation="portrait" /> <!-- 注册界面 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.RegisterActivity"
+            android:name=".ui.activity.RegisterActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
-
-        <!-- 设置界面 -->
+            android:screenOrientation="portrait" /> <!-- 设置界面 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.SettingActivity"
+            android:name=".ui.activity.SettingActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/setting_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 忘记密码 -->
+            android:screenOrientation="portrait" /> <!-- 忘记密码 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PasswordForgetActivity"
+            android:name=".ui.activity.PasswordForgetActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/password_forget_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 重置密码 -->
+            android:screenOrientation="portrait" /> <!-- 重置密码 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PasswordResetActivity"
+            android:name=".ui.activity.PasswordResetActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/password_reset_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 手机号校验 -->
+            android:screenOrientation="portrait" /> <!-- 手机号校验 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PhoneVerifyActivity"
+            android:name=".ui.activity.PhoneVerifyActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/phone_verify_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 手机号更换 -->
+            android:screenOrientation="portrait" /> <!-- 手机号更换 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PhoneResetActivity"
+            android:name=".ui.activity.PhoneResetActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/phone_reset_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 关于我们 -->
+            android:screenOrientation="portrait" /> <!-- 关于我们 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.AboutActivity"
+            android:name=".ui.activity.AboutActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/about_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 个人资料 -->
+            android:screenOrientation="portrait" /> <!-- 个人资料 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PersonalDataActivity"
+            android:name=".ui.activity.PersonalDataActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/personal_data_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 浏览器 -->
+            android:screenOrientation="portrait" /> <!-- 浏览器 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.WebActivity"
+            android:name=".ui.activity.WebActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/web_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 图片选择 -->
+            android:screenOrientation="portrait" /> <!-- 图片选择 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.PhotoActivity"
+            android:name=".ui.activity.PhotoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="@string/photo_title"
-            android:screenOrientation="portrait" />
-
-        <!-- 查看大图 -->
+            android:screenOrientation="portrait" /> <!-- 查看大图 -->
         <activity
-            android:name="com.ljy.demo.ui.activity.ImageActivity"
+            android:name=".ui.activity.ImageActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" /> <!-- 对话框案例 -->
+        <activity
+            android:name=".ui.activity.DialogActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" /> <!-- 状态案例 -->
+        <activity
+            android:name=".ui.activity.StatusActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
-
-        <!-- 对话框案例 -->
-        <activity
-            android:name="com.ljy.demo.ui.activity.DialogActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
-
-        <!-- 状态案例 -->
-        <activity
-            android:name="com.ljy.demo.ui.activity.StatusActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
-
     </application>
 
 </manifest>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">安卓架构</string>
+    <string name="app_name">安卓架构Demo</string>
 
     <!-- 通用的 -->
     <string name="common_phone_input_hint">输入手机号码</string>
@@ -176,4 +176,6 @@
     <string name="photo_launch_fail">无法启动相机</string>
     <string name="photo_picture_error">图片错误</string>
 
+    <!-- 关于RecyclerViewActivity -->
+    <string name="recyclerView_title">演示界面</string>
 </resources>

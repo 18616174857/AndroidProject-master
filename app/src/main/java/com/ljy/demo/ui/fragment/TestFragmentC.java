@@ -129,9 +129,11 @@ public final class TestFragmentC extends MyLazyFragment<HomeActivity> {
                         });
                 break;
             case R.id.btn_test_state_black:
+                //状态栏黑色字体
                 getAttachActivity().getStatusBarConfig().statusBarDarkFont(true).init();
                 break;
             case R.id.btn_test_state_white:
+                //状态栏白色字体
                 getAttachActivity().getStatusBarConfig().statusBarDarkFont(false).init();
                 break;
             default:

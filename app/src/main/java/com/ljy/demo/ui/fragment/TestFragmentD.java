@@ -16,6 +16,7 @@ import com.ljy.demo.ui.activity.PasswordResetActivity;
 import com.ljy.demo.ui.activity.PersonalDataActivity;
 import com.ljy.demo.ui.activity.PhoneResetActivity;
 import com.ljy.demo.ui.activity.PhoneVerifyActivity;
+import com.ljy.demo.ui.activity.RecyclerViewActivity;
 import com.ljy.demo.ui.activity.RegisterActivity;
 import com.ljy.demo.ui.activity.SettingActivity;
 import com.ljy.demo.ui.activity.StatusActivity;
@@ -54,7 +55,7 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
 
     @OnClick({R.id.btn_test_dialog, R.id.btn_test_hint, R.id.btn_test_login, R.id.btn_test_register, R.id.btn_test_forget,
             R.id.btn_test_reset,R.id.btn_test_verify, R.id.btn_test_change, R.id.btn_test_personal, R.id.btn_test_setting,
-            R.id.btn_test_about, R.id.btn_test_browser, R.id.btn_test_image, R.id.btn_test_crash, R.id.btn_test_pay})
+            R.id.btn_test_about, R.id.btn_test_browser, R.id.btn_test_image, R.id.btn_test_crash, R.id.btn_test_pay,R.id.btn_test_RecyclerView})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_test_dialog:
@@ -126,6 +127,10 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
                             public void onCancel(BaseDialog dialog) {}
                         })
                         .show();
+                break;
+            case R.id.btn_test_RecyclerView:
+
+                startActivity(RecyclerViewActivity.class);
                 break;
             default:
                 break;
