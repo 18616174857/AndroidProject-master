@@ -39,6 +39,7 @@ public class ViewPageActivity extends MyActivity {
 
     @Override
     protected void initView() {
+        //viewpage
         List<Fragment> fragments = new ArrayList<>();
         List<String> titles = new ArrayList<>();
         fragments.add(new CopyFragment());
