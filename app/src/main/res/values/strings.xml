@@ -178,4 +178,6 @@
 
     <!-- 关于RecyclerViewActivity -->
     <string name="recyclerView_title">演示界面</string>
+    <!-- 关于测试fragment -->
+    <string name="fragment_title">测试fragment</string>
 </resources>
