@@ -10,7 +10,7 @@
     app:cardBackgroundColor="#dc000000"
     app:cardCornerRadius="15dp"
     app:cardElevation="0px"
-    tools:context="com.hjq.demo.com.ljy.demo.ui.dialog.ToastDialog">
+    tools:context="com.ljy.demo.ui.dialog.ToastDialog">
 
     <LinearLayout
         android:layout_width="wrap_content"

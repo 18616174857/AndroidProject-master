@@ -5,14 +5,18 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import com.ljy.base.BaseDialog;
 import com.ljy.base.BaseDialogFragment;
 import com.ljy.demo.R;
 import com.ljy.demo.common.MyActivity;
+import com.ljy.demo.ui.dialog.LoadingDialog;
 import com.ljy.demo.ui.dialog.PayPassDialog;
 import com.ljy.demo.ui.dialog.PayPasswordDialog;
 import com.ljy.demo.ui.dialog.ShareDialog;
+import com.ljy.demo.ui.dialog.ShowToastUtil;
 import com.ljy.demo.ui.dialog.UpdateDialog;
 import com.ljy.demo.widget.PayPassView;
 import com.ljy.demo.wxapi.WXEntryActivity;
@@ -55,10 +59,25 @@ public final class DialogActivity extends MyActivity {
     protected void initData() {
 
     }
-
+    /**
+     * TitleBar 左边的View被点击了
+     */
+    @Override
+    public void onLeftClick(View v) {
+        Toast.makeText(this, "左侧文本点击事件", Toast.LENGTH_SHORT).show();
+    }
+    /**
+     * TitleBar 右边的View被点击了
+     */
+    @Override
+    public void onRightClick(View v) {
+        Toast.makeText(this, "右侧文本点击事件", Toast.LENGTH_SHORT).show();
+    }
     @OnClick({R.id.btn_dialog_message, R.id.btn_dialog_input, R.id.btn_dialog_bottom_menu, R.id.btn_dialog_center_menu,
             R.id.btn_dialog_succeed_toast, R.id.btn_dialog_fail_toast, R.id.btn_dialog_warn_toast, R.id.btn_dialog_wait,
             R.id.btn_dialog_pay,R.id.btn_dialog_pay2, R.id.btn_dialog_address, R.id.btn_dialog_date, R.id.btn_dialog_time,
+            R.id.btn_dialog_three,R.id.btn_dialog_lunar,R.id.btn_dialog_two,R.id.btn_dialog_no,R.id.btn_dialog_dizhi,
+            R.id.btn_dialog_succeed, R.id.btn_dialog_loading,
             R.id.btn_dialog_update, R.id.btn_dialog_share, R.id.btn_dialog_custom})
     public void onClick(View v) {
         switch (v.getId()) {
@@ -177,6 +196,9 @@ public final class DialogActivity extends MyActivity {
                         .setMessage("完成")
                         .show();
                 break;
+            case  R.id.btn_dialog_succeed:
+                ShowToastUtil.showToast(this,"认证成功!",2000);
+                break;
             case R.id.btn_dialog_fail_toast:
                 // 失败对话框
                 new ToastDialog.Builder(this)
@@ -203,6 +225,11 @@ public final class DialogActivity extends MyActivity {
                         dialog.dismiss();
                     }
                 }, 2000);
+                break;
+            case R.id.btn_dialog_loading:
+                LoadingDialog loadingDialog = new LoadingDialog(this,this, R.style.custom_progress);
+                loadingDialog.initDialog();
+                loadingDialog.show();
                 break;
             case R.id.btn_dialog_pay:
                 // 支付密码输入对话框
@@ -357,6 +384,27 @@ public final class DialogActivity extends MyActivity {
                         })
                         .show();
                 break;
+            case R.id.btn_dialog_three:
+                // 年月日时分秒选择对话框
+
+                break;
+            case R.id.btn_dialog_lunar:
+                // 公农历切换选择对话框
+
+                break;
+            case R.id.btn_dialog_two:
+                // 二级联动选择对话框
+
+                break;
+            case R.id.btn_dialog_no:
+                // 不联动选择对话框
+
+                break;
+            case R.id.btn_dialog_dizhi:
+                // 省市区三级联动选择对话框
+
+                break;
+
             case R.id.btn_dialog_share:
                 toast("记得改好第三方 AppID 和 AppKey，否则会调不起来哦");
                 toast("也别忘了改微信 " + WXEntryActivity.class.getSimpleName() + " 类所在的包名哦");

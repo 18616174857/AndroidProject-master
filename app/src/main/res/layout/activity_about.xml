@@ -46,6 +46,28 @@
             android:textColor="#222222"
             android:textSize="14sp" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:autoLink="all"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="20dp"
+            android:text="测试自定义星星控件"
+            android:textColor="#222222"
+            android:textSize="14sp" />
+
+         <com.ljy.demo.widget.StarBar
+            android:id="@+id/mStarView"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:starCount="5"
+            app:starDistance="5dp"
+            app:starEmpty="@mipmap/ic_star_grey"
+            app:starFill="@mipmap/ic_star_yellow"
+            app:starSize="30dp" />
+
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatTextView

@@ -1,5 +1,8 @@
 package com.ljy.demo.ui.activity;
 
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,18 +11,20 @@ import com.ljy.demo.R;
 import com.ljy.demo.common.MyActivity;
 import com.ljy.demo.ui.dialog.AddressDialog;
 import com.ljy.demo.ui.dialog.InputDialog;
+import com.ljy.demo.widget.MyImageViewCircle;
 import com.ljy.image.ImageLoader;
 import com.ljy.widget.layout.SettingBar;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- *    author : Android Liang_liang
- *    time   : 2019/04/20
- *    desc   : 个人资料
+ * author : Android Liang_liang
+ * time   : 2019/04/20
+ * desc   : 个人资料
  */
 public final class PersonalDataActivity extends MyActivity {
 
@@ -33,6 +38,8 @@ public final class PersonalDataActivity extends MyActivity {
     SettingBar mAddressView;
     @BindView(R.id.sb_person_data_phone)
     SettingBar mPhoneView;
+    @BindView(R.id.iv_person_data_circle)
+    MyImageViewCircle ivPersonDataCircle;
 
     private String mAvatarUrl;
 
@@ -51,11 +58,26 @@ public final class PersonalDataActivity extends MyActivity {
 
     }
 
-    @OnClick({R.id.iv_person_data_avatar, R.id.fl_person_data_head, R.id.sb_person_data_name, R.id.sb_person_data_address, R.id.sb_person_data_phone})
+    @OnClick({R.id.iv_person_data_avatar,R.id.iv_person_data_circle, R.id.fl_person_data_head, R.id.sb_person_data_name, R.id.sb_person_data_address, R.id.sb_person_data_phone})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_person_data_avatar:
                 if (mAvatarUrl != null && !"".equals(mAvatarUrl)) {
+                    ImageLoader.with(getActivity())
+                            .load(mAvatarUrl)
+                            .into(mAvatarView);
+                    // 查看头像
+                    ImageActivity.start(getActivity(), mAvatarUrl);
+                } else {
+                    // 选择头像
+                    onClick(findViewById(R.id.fl_person_data_head));
+                }
+                break;
+            case R.id.iv_person_data_circle:
+                if (mAvatarUrl != null && !"".equals(mAvatarUrl)) {
+                    ImageLoader.with(getActivity())
+                            .load(mAvatarUrl)
+                            .into(ivPersonDataCircle);
                     // 查看头像
                     ImageActivity.start(getActivity(), mAvatarUrl);
                 } else {
@@ -71,11 +93,28 @@ public final class PersonalDataActivity extends MyActivity {
                         mAvatarUrl = data.get(0);
                         ImageLoader.with(getActivity())
                                 .load(mAvatarUrl)
-                                .into(mAvatarView);
+                                .into(ivPersonDataCircle);
+                        //Glide加载圆形和圆角
+                        /*Glide.with(itemView.getContext()).load(R.mipmap.female).
+                                apply(RequestOptions.bitmapTransform(new CircleCrop())).into(myClassImg);*/
+                        /*int defaultHead = R.mipmap.female;
+                        if (!TextUtils.isEmpty(schoolDirectoryPersonDetailsBean.getTeamMemberGender())
+                                && schoolDirectoryPersonDetailsBean.getTeamMemberGender().equals("男")) {
+                            defaultHead = R.mipmap.male;
+                        } else {
+                            defaultHead = R.mipmap.female;
+                        }
+                        RequestOptions requestOptions = RequestOptions
+                                .bitmapTransform(new RoundedCorners(10))//显示圆角
+                                .placeholder(defaultHead)
+                                .error(defaultHead);//加载不出显示错误图片
+                        Glide.with(getBaseContext()).load(schoolDirectoryPersonDetailsBean.getTeamMemberImage())
+                                .apply(requestOptions).into(ivImgUrl);*/
                     }
 
                     @Override
-                    public void onCancel() {}
+                    public void onCancel() {
+                    }
                 });
                 break;
             case R.id.sb_person_data_name:
@@ -99,7 +138,8 @@ public final class PersonalDataActivity extends MyActivity {
                             }
 
                             @Override
-                            public void onCancel(BaseDialog dialog) {}
+                            public void onCancel(BaseDialog dialog) {
+                            }
                         })
                         .show();
                 break;
@@ -107,9 +147,9 @@ public final class PersonalDataActivity extends MyActivity {
                 new AddressDialog.Builder(this)
                         //.setTitle("选择地区")
                         // 设置默认省份
-                        .setProvince("广东省")
+                        .setProvince("江苏省")
                         // 设置默认城市（必须要先设置默认省份）
-                        .setCity("广州市")
+                        .setCity("苏州市")
                         // 不选择县级区域
                         //.setIgnoreArea()
                         .setListener(new AddressDialog.OnListener() {
@@ -123,7 +163,8 @@ public final class PersonalDataActivity extends MyActivity {
                             }
 
                             @Override
-                            public void onCancel(BaseDialog dialog) {}
+                            public void onCancel(BaseDialog dialog) {
+                            }
                         })
                         .show();
                 break;
@@ -139,4 +180,13 @@ public final class PersonalDataActivity extends MyActivity {
                 break;
         }
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+
 }

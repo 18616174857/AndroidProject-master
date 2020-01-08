@@ -27,6 +27,7 @@ public final class TestFragmentC extends MyLazyFragment<HomeActivity> {
 
     @BindView(R.id.iv_test_image)
     ImageView mImageView;
+    String ImageUrl = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1578463628239&di=25e922850f4bf05c434d49d8ef58c68a&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171211%2F40e91083ba0e4a0084b2c80857195050.jpeg";
 
     public static TestFragmentC newInstance() {
         return new TestFragmentC();
@@ -60,21 +61,21 @@ public final class TestFragmentC extends MyLazyFragment<HomeActivity> {
             case R.id.btn_test_image1:
                 mImageView.setVisibility(View.VISIBLE);
                 ImageLoader.with(this)
-                        .load("https://www.baidu.com/img/bd_logo.png")
+                        .load(ImageUrl)
                         .into(mImageView);
                 break;
             case R.id.btn_test_image2:
                 mImageView.setVisibility(View.VISIBLE);
                 ImageLoader.with(this)
                         .circle()
-                        .load("https://www.baidu.com/img/bd_logo.png")
+                        .load(ImageUrl)
                         .into(mImageView);
                 break;
             case R.id.btn_test_image3:
                 mImageView.setVisibility(View.VISIBLE);
                 ImageLoader.with(this)
                         .circle((int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, this.getResources().getDisplayMetrics()))
-                        .load("https://www.baidu.com/img/bd_logo.png")
+                        .load(ImageUrl)
                         .into(mImageView);
                 break;
             case R.id.btn_test_image4:

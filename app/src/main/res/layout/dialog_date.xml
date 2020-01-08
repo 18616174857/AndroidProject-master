@@ -7,7 +7,7 @@
     android:layout_gravity="bottom"
     android:background="@drawable/bg_dialog_rounded_corner"
     android:orientation="vertical"
-    tools:context="com.hjq.demo.com.ljy.demo.ui.dialog.DateDialog">
+    tools:context="com.ljy.demo.ui.dialog.DateDialog">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,29 +70,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp">
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
         <com.ljy.demo.widget.LoopView
             android:id="@+id/lv_date_year"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:lv_textSize="20sp" />
+            app:lv_textSize="15sp" />
 
         <com.ljy.demo.widget.LoopView
             android:id="@+id/lv_date_month"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:lv_textSize="20sp" />
+            app:lv_textSize="15sp" />
 
         <com.ljy.demo.widget.LoopView
             android:id="@+id/lv_date_day"
             android:layout_width="0px"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:lv_textSize="20sp" />
+            app:lv_textSize="15sp" />
 
     </LinearLayout>
 

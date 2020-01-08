@@ -30,7 +30,7 @@ public final class DateDialog {
             View.OnClickListener {
 
         private final int mStartYear = 1920;
-        private final int mEndYear = 2019;
+        private final int mEndYear = 2100;
 
         private final TextView mTitleView;
         private final TextView mCancelView;

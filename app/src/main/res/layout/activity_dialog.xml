@@ -11,6 +11,7 @@
     <com.hjq.bar.TitleBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:rightTitle="右文本"
         app:title="对话框案例" />
 
     <androidx.core.widget.NestedScrollView
@@ -65,6 +66,14 @@
                 android:text="弹出完成对话框" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_succeed"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出成功对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_dialog_fail_toast"
                 style="@style/ButtonStyle"
                 android:layout_width="match_parent"
@@ -87,6 +96,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="弹出加载对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_loading"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出加载对话框2" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_dialog_pay"
@@ -127,6 +144,46 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="弹出时间对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_three"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出年月日时分秒对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_lunar"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出公农历对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_two"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出二级联动对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_no"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出不联动对话框" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dialog_dizhi"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="弹出省市区对话框" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_dialog_update"

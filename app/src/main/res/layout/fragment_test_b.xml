@@ -54,7 +54,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/bg_launcher" />
+                        android:src="@mipmap/feb" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -65,7 +65,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
-                    android:src="@drawable/ic_logo"
+                    android:src="@mipmap/feb"
                     app:scaleRatio="1.2" />
 
             </LinearLayout>
