@@ -31,7 +31,6 @@ import com.ljy.demo.ui.dialog.WaitDialog;
 import com.ljy.umeng.Platform;
 import com.ljy.umeng.UmengClient;
 import com.ljy.umeng.UmengShare;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;

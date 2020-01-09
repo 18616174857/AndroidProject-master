@@ -1,7 +1,10 @@
 package com.ljy.demo.common;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,13 +18,19 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
 import com.ljy.base.BaseActivity;
+import com.ljy.base.BaseDialog;
 import com.ljy.demo.BuildConfig;
 import com.ljy.demo.R;
 import com.ljy.demo.helper.ActivityStackManager;
 import com.ljy.demo.other.EventBusManager;
 import com.ljy.demo.other.StatusManager;
 import com.hjq.toast.ToastUtils;
+import com.ljy.demo.ui.dialog.LoadingDialog;
+import com.ljy.demo.ui.dialog.NonetDialog;
+import com.ljy.demo.ui.dialog.TimeDialog;
 import com.ljy.umeng.UmengClient;
+
+import java.util.Calendar;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -40,6 +49,12 @@ public abstract class MyActivity extends BaseActivity
     private ImmersionBar mImmersionBar;
     /** ButterKnife 注解 */
     private Unbinder mButterKnife;
+    /** 网络监听类 */
+    ConnectivityManager manager;
+    boolean flag = false;
+    /** 正在加载类 */
+    private LoadingDialog loadingProgress;
+    /** 网络错误类 */
 
     /**
      * 获取标题栏 id
@@ -76,6 +91,7 @@ public abstract class MyActivity extends BaseActivity
         mButterKnife = ButterKnife.bind(this);
         EventBusManager.register(this);
         initImmersion();
+        initDialog();
     }
 
     /**
@@ -389,5 +405,72 @@ public abstract class MyActivity extends BaseActivity
 
     public void showLayout(Drawable drawable, CharSequence hint) {
         mStatusManager.showLayout(getContentView(), drawable, hint);
+    }
+
+    private void initDialog() {
+        // loading
+        loadingProgress = new LoadingDialog(this);
+
+    }
+    /**
+     * show tips
+     */
+    public void showNetTipsDialog() {
+        checkNetworkState();
+    }
+    /**
+     * 检测网络是否连接
+     * @return
+     */
+    private boolean checkNetworkState() {
+
+        //得到网络连接信息
+        manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        //去进行判断网络是否连接
+        if (manager.getActiveNetworkInfo() != null) {
+            flag = manager.getActiveNetworkInfo().isAvailable();
+        }
+        if (!flag) {
+            //   setNetwork(); //网络未连接时的处理
+            showTipsDialog();
+        } else {
+            //   isNetworkAvailable();//网络连接时的处理
+        }
+        return flag;
+    }
+
+    private void showTipsDialog(){
+        new NonetDialog.Builder(this)
+                // 确定按钮文本
+                .setConfirm(getString(R.string.common_confirm))
+                // 设置 null 表示不显示取消按钮
+                .setCancel(getString(R.string.common_cancel))
+                .setListener(new NonetDialog.OnListener() {
+                    @Override
+                    public void onSelected(BaseDialog dialog) {
+                        Intent intent = null;
+                        /**
+                         * 判断手机系统的版本！如果API大于10 就是3.0+
+                         * 因为3.0以上的版本的设置和3.0以下的设置不一样，调用的方法不同
+                         */
+                        if (android.os.Build.VERSION.SDK_INT > 10) {
+                            intent = new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS);
+                        } else {
+                            intent = new Intent();
+                            ComponentName component = new ComponentName(
+                                    "com.android.settings",
+                                    "com.android.settings.WirelessSettings");
+                            intent.setComponent(component);
+                            intent.setAction("android.intent.action.VIEW");
+                        }
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onCancel(BaseDialog dialog) {
+                       // toast("取消了");
+                    }
+                })
+                .show();
     }
 }

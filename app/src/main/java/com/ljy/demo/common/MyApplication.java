@@ -13,10 +13,23 @@ import com.ljy.image.ImageLoader;
 import com.hjq.toast.ToastInterceptor;
 import com.hjq.toast.ToastUtils;
 import com.ljy.umeng.UmengClient;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheEntity;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.cookie.CookieJarImpl;
+import com.lzy.okgo.cookie.store.SPCookieStore;
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
 
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
 import cat.ereza.customactivityoncrash.config.CaocConfig;
+import okhttp3.OkHttpClient;
 
 /**
  *    author : Android Liang_liang
@@ -29,7 +42,7 @@ public final class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         initSDK(this);
-
+        initOkGo();
     }
 
     /**
@@ -105,6 +118,45 @@ public final class MyApplication extends Application {
             }
         });
     }
+    private void initOkGo(){
+        // 一、构建OkHttpClient.Builder
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        // 二、配置log
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkGo");
+        // log打印级别，决定了log显示的详细程度
+        loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
+        // log颜色级别，决定了log在控制台显示的颜色
+        loggingInterceptor.setColorLevel(Level.INFO);
+        builder.addInterceptor(loggingInterceptor);
+        // 三、配置超时时间
+        // 全局的读取超时时间
+        builder.readTimeout(OkGo.DEFAULT_MILLISECONDS, TimeUnit.MILLISECONDS);
+        // 全局的写入超时时间
+        builder.writeTimeout(OkGo.DEFAULT_MILLISECONDS, TimeUnit.MILLISECONDS);
+        // 全局的连接超时时间
+        builder.connectTimeout(OkGo.DEFAULT_MILLISECONDS, TimeUnit.MILLISECONDS);
+        // 四、配置Cookie，以下几种任选其一就行
+        // 1、使用sp保持cookie，如果cookie不过期，则一直有效
+        builder.cookieJar(new CookieJarImpl(new SPCookieStore(this)));
+        //配置https的域名匹配规则，详细看demo的初始化介绍，不需要就不要加入，使用不当会导致https握手失败
+        builder.hostnameVerifier(new SafeHostnameVerifier());
+        // 配置OkGo
+        OkGo.getInstance().init(this)                       //必须调用初始化
+                .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置将使用默认的
+                .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
+                .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
+                .setRetryCount(3);
+    }
+
+    private class SafeHostnameVerifier implements HostnameVerifier {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            //验证主机名是否匹配
+            //return hostname.equals("server.jeasonlzy.com");
+            return true;
+        }
+    }
+
 
     @Override
     protected void attachBaseContext(Context base) {

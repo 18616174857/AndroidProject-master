@@ -10,6 +10,7 @@ import com.ljy.demo.ui.activity.AboutActivity;
 import com.ljy.demo.ui.activity.DialogActivity;
 import com.ljy.demo.ui.activity.HomeActivity;
 import com.ljy.demo.ui.activity.ImageActivity;
+import com.ljy.demo.ui.activity.ListViewActivity;
 import com.ljy.demo.ui.activity.LoginActivity;
 import com.ljy.demo.ui.activity.PasswordForgetActivity;
 import com.ljy.demo.ui.activity.PasswordResetActivity;
@@ -19,6 +20,8 @@ import com.ljy.demo.ui.activity.PhoneVerifyActivity;
 import com.ljy.demo.ui.activity.RecyclerViewActivity;
 import com.ljy.demo.ui.activity.RegisterActivity;
 import com.ljy.demo.ui.activity.SettingActivity;
+import com.ljy.demo.ui.activity.SlideMoreRecyclerViewActivity;
+import com.ljy.demo.ui.activity.SlideRecyclerViewActivity;
 import com.ljy.demo.ui.activity.StatusActivity;
 import com.ljy.demo.ui.activity.ViewPageActivity;
 import com.ljy.demo.ui.activity.WebActivity;
@@ -57,7 +60,8 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
     @OnClick({R.id.btn_test_dialog, R.id.btn_test_hint, R.id.btn_test_login, R.id.btn_test_register, R.id.btn_test_forget,
             R.id.btn_test_reset,R.id.btn_test_verify, R.id.btn_test_change, R.id.btn_test_personal, R.id.btn_test_setting,
             R.id.btn_test_about, R.id.btn_test_browser, R.id.btn_test_image, R.id.btn_test_crash, R.id.btn_test_pay,
-            R.id.btn_test_RecyclerView,R.id.btn_test_ViewPage})
+            R.id.btn_test_RecyclerView, R.id.btn_test_RecyclerView2,R.id.btn_test_RecyclerView3,R.id.btn_test_ListView,
+            R.id.btn_test_ViewPage})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_test_dialog:
@@ -133,6 +137,17 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
             case R.id.btn_test_RecyclerView:
 
                 startActivity(RecyclerViewActivity.class);
+                break;
+            case R.id.btn_test_RecyclerView2:
+
+                startActivity(SlideRecyclerViewActivity.class);
+                break;
+            case R.id.btn_test_RecyclerView3:
+
+                startActivity(SlideMoreRecyclerViewActivity.class);
+                break;
+            case R.id.btn_test_ListView:
+                startActivity(ListViewActivity.class);
                 break;
             case R.id.btn_test_ViewPage:
 

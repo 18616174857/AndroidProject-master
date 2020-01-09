@@ -2,26 +2,24 @@ package com.ljy.demo.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ljy.demo.R;
 import com.ljy.demo.common.MyActivity;
 import com.ljy.demo.ui.Entity.TestEntity;
 import com.ljy.demo.ui.adapter.TestAdapter;
+import com.ljy.demo.widget.SwipeListLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-
 import java.util.ArrayList;
-
+import java.util.HashSet;
+import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public class RecyclerViewActivity extends MyActivity {
 
@@ -32,6 +30,8 @@ public class RecyclerViewActivity extends MyActivity {
     RecyclerView rvTest;
     private TestAdapter mTestAdapter;
     private ArrayList<TestEntity.ResultBean.ListBean> mTestList;
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_recycler_view;
@@ -40,7 +40,7 @@ public class RecyclerViewActivity extends MyActivity {
     @Override
     protected void initView() {
         //初始化的时候默认没有数据，显示空的布局
-        // getData(1);
+         getData(1);
         refreshView();
         smartRefreshView();
     }
@@ -72,7 +72,7 @@ public class RecyclerViewActivity extends MyActivity {
         //2，设置LayoutManager,LinearLayoutManager表示竖直向下
         rvTest.setLayoutManager(new LinearLayoutManager(this));
         //3，初始化一个无数据的适配器
-        mTestAdapter = new TestAdapter();
+        mTestAdapter = new TestAdapter(mTestList);
         //开启动画效果
         mTestAdapter.openLoadAnimation();
         //设置动画效果
@@ -94,13 +94,21 @@ public class RecyclerViewActivity extends MyActivity {
         rvTest.setHasFixedSize(true);
         //解决数据加载完成后, 没有停留在顶部的问题
         rvTest.setFocusable(false);
-
         //6，给recyclerView的每一个子列表添加点击事件
         mTestAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(RecyclerViewActivity.this, "我点击了第" + position + "个子view",
+                TextView title = view.findViewById(R.id.test_item_title);
+             /*   switch (view.getId()){
+                   case R.id.test_item_title:
+                        Toast.makeText(getBaseContext(), "我点击了第个的标题",
                         Toast.LENGTH_SHORT).show();
+                       break;
+                   case R.id.test_item_message:
+                       Toast.makeText(getBaseContext(), "我点击了第个的内容",
+                               Toast.LENGTH_SHORT).show();
+                       break;
+               }*/
             }
         });
     }
@@ -122,6 +130,8 @@ public class RecyclerViewActivity extends MyActivity {
                 //上拉加载，一般添加调用接口获取更多数据的方法
                 getData(3);
                 refreshLayout.finishLoadMoreWithNoMoreData();
+
+
             }
         });
     }
@@ -136,7 +146,6 @@ public class RecyclerViewActivity extends MyActivity {
         //添加临时数据，一般直接从接口获取
         switch (mode) {
             case 1:
-
                 break;
             case 2:
                 mTestList = new ArrayList<>();
@@ -151,6 +160,7 @@ public class RecyclerViewActivity extends MyActivity {
                     mTestList.add(new TestEntity.ResultBean.ListBean("我是布丁", "我有一个小狗布丁呀"));
                 }
                 mTestAdapter.setNewData(mTestList);
+
                 break;
             default:
                 mTestList = new ArrayList<>();
@@ -160,4 +170,6 @@ public class RecyclerViewActivity extends MyActivity {
                 break;
         }
     }
+
+
 }

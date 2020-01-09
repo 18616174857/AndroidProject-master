@@ -143,6 +143,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="点我进入RecyclerView页面" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_test_RecyclerView2"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="点我进入侧滑删除RecyclerView页面" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_test_RecyclerView3"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="点我进入多个侧滑RecyclerView页面" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_test_ListView"
+                style="@style/ButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="点我进入ListView页面" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_test_ViewPage"

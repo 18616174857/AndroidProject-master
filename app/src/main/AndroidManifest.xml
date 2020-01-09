@@ -21,7 +21,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".ui.activity.ViewPageActivity"></activity>
+        <activity android:name=".ui.activity.SlideMoreRecyclerViewActivity"></activity>
+        <activity android:name=".ui.activity.SlideRecyclerViewActivity" />
+        <activity android:name=".ui.activity.ListViewActivity" />
+        <activity android:name=".ui.activity.ViewPageActivity" />
         <activity android:name=".ui.activity.RecyclerViewActivity" /> <!-- 适配Android 7.0文件意图 -->
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -36,8 +39,7 @@
             android:name=".ui.activity.CrashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:process=":crash"
-            android:screenOrientation="portrait" />
-        <!-- 启动页面（因为使用了LauncherTheme，所以不要给这个Activity设置screenOrientation属性，会导致崩溃） -->
+            android:screenOrientation="portrait" /> <!-- 启动页面（因为使用了LauncherTheme，所以不要给这个Activity设置screenOrientation属性，会导致崩溃） -->
         <activity
             android:name=".ui.activity.SplashActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
