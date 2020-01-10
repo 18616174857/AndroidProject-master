@@ -124,7 +124,7 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
                             @Override
                             public void onConfirm(BaseDialog dialog) {
                                 try {
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2FFKX04202G4K6AVCF5GIY66%3F_s%3Dweb-other"));
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("alipays://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2FFKX03758FLJF0OA16ISZD2%3F_s%3Dweb-other"));
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     startActivity(intent);
                                     toast("这个开源项目因为您的支持而能够不断更新、完善，非常感谢您的支持");

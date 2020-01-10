@@ -7,7 +7,7 @@
     android:layout_gravity="bottom"
     android:background="@drawable/bg_dialog_rounded_corner"
     android:orientation="vertical"
-    tools:context="com.hjq.demo.com.ljy.demo.ui.dialog.AddressDialog">
+    tools:context="com.ljy.demo.ui.dialog.AddressDialog">
 
     <FrameLayout
         android:layout_width="match_parent"
