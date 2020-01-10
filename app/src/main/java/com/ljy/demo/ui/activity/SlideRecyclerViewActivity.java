@@ -2,24 +2,27 @@ package com.ljy.demo.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.ljy.demo.R;
 import com.ljy.demo.common.MyActivity;
 import com.ljy.demo.ui.Entity.TestEntity;
 import com.ljy.demo.ui.adapter.SlideRecyclerViewAdapter;
 import com.ljy.demo.widget.SlideRecyclerView;
+import com.lzy.okgo.OkGo;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
-
+/**
+ *    author : Android Liang_liang
+ *    time   : 2020/01/08
+ *    desc   : 单个侧滑删除RecyclerView使用案例
+ */
 public class SlideRecyclerViewActivity extends MyActivity {
 
     @BindView(R.id.recycler_view_list)
@@ -42,12 +45,14 @@ public class SlideRecyclerViewActivity extends MyActivity {
 
     @Override
     protected void initView() {
-        mTestList = new ArrayList<>();
+     /*   mTestList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             mTestList.add(new TestEntity.ResultBean.ListBean("我是布丁--" + i + "", "我有一个小狗布丁呀"));
-        }
+        }*/
+        mTestList = new ArrayList<>();
         refreshView();
         smartRefreshView();
+
     }
 
     @Override
@@ -63,6 +68,7 @@ public class SlideRecyclerViewActivity extends MyActivity {
         View emptyView = View.inflate(this, R.layout.empty_view, null);
         //2，设置LayoutManager,LinearLayoutManager表示竖直向下
         recyclerViewList.setLayoutManager(new LinearLayoutManager(this));
+
         //3，初始化一个无数据的适配器
         mTestAdapter = new SlideRecyclerViewAdapter(mTestList);
         //开启动画效果
@@ -90,14 +96,28 @@ public class SlideRecyclerViewActivity extends MyActivity {
         mTestAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-
+                Toast.makeText(getActivity(), "我点击了详情==="+position+"",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        mTestAdapter.setOnDetailsClickListener(new SlideRecyclerViewAdapter.DetailsItemListener() {
+            @Override
+            public void onDetailsClick(int position) {
+                Toast.makeText(getActivity(), "我点击了编辑==="+position+"",
+                        Toast.LENGTH_SHORT).show();
+              //  recyclerViewList.closeMenu();
             }
         });
         mTestAdapter.setOnDeleteClickListener(new SlideRecyclerViewAdapter.OnDeleteClickLister() {
             @Override
             public void onDeleteClick(View view, int position) {
-                mTestList.remove(position);
-                mTestAdapter.notifyDataSetChanged();
+                if (position >= 0 && position < mTestList.size()) {
+                    mTestList.remove(position);
+                    mTestAdapter.notifyItemRemoved(position);
+                }
+                Toast.makeText(getActivity(), "我点击了删除****"+position+"",
+                        Toast.LENGTH_SHORT).show();
+               // mTestAdapter.notifyDataSetChanged();
                 recyclerViewList.closeMenu();
             }
         });

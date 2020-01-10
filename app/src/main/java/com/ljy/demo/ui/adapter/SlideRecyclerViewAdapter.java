@@ -3,8 +3,6 @@ package com.ljy.demo.ui.adapter;
 
 
 import android.view.View;
-import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -13,6 +11,7 @@ import com.ljy.demo.ui.Entity.TestEntity;
 import java.util.List;
 
 public class SlideRecyclerViewAdapter extends BaseQuickAdapter<TestEntity.ResultBean.ListBean, BaseViewHolder> {
+    private DetailsItemListener mDetailsItemListener;
     private OnDeleteClickLister mDeleteClickListener;
     /**
      * 构造器，用来初始化TestAdapter
@@ -50,13 +49,14 @@ public class SlideRecyclerViewAdapter extends BaseQuickAdapter<TestEntity.Result
                 }
             }
         });
-       /* helper.setOnClickListener(R.id.tv_details, new View.OnClickListener() {
+        helper.setOnClickListener(R.id.tv_details, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "我点击了详情",
-                        Toast.LENGTH_SHORT).show();
+                if (mDetailsItemListener != null) {
+                    mDetailsItemListener.onDetailsClick( helper.getPosition());
+                }
             }
-        });*/
+        });
     }
 
     public void setOnDeleteClickListener(OnDeleteClickLister listener) {
@@ -65,5 +65,12 @@ public class SlideRecyclerViewAdapter extends BaseQuickAdapter<TestEntity.Result
 
     public interface OnDeleteClickLister {
         void onDeleteClick(View view, int position);
+    }
+    public interface DetailsItemListener {
+
+        void onDetailsClick(int position);
+    }
+    public void setOnDetailsClickListener(DetailsItemListener detailsItemListener) {
+        this.mDetailsItemListener = detailsItemListener;
     }
 }

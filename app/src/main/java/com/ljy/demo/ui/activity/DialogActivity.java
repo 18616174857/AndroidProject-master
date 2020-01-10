@@ -137,9 +137,11 @@ public final class DialogActivity extends MyActivity {
                 break;
             case R.id.btn_dialog_bottom_menu:
                 List<String> data = new ArrayList<>();
-                for (int i = 0; i < 5; i++) {
+               /* for (int i = 0; i < 5; i++) {
                     data.add("我是数据" + i);
-                }
+                }*/
+                data.add("拍照");
+                data.add("从手机相册选择");
                 // 底部选择框
                 new MenuDialog.Builder(this)
                         // 设置 null 表示不显示取消按钮

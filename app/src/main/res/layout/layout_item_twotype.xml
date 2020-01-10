@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_60"
+    android:layout_height="@dimen/dp_65"
     android:clipChildren="false">
 
     <RelativeLayout
@@ -24,22 +24,21 @@
                    android:id="@+id/test_item_title"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_marginTop="10dp"
+                   android:layout_marginTop="@dimen/dp_5"
                    android:text="我爱小狗"
                    android:textColor="#333333"
-                   android:textSize="16sp" />
+                   android:textSize="@dimen/sp_16" />
 
                <TextView
                    android:id="@+id/test_item_message"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_below="@id/test_item_title"
-                   android:layout_marginTop="10dp"
+                   android:layout_marginTop="@dimen/dp_10"
                    android:ellipsize="end"
                    android:maxLines="2"
                    android:text="我爱小狗我爱小狗我爱小狗我爱小狗"
                    android:textColor="#999999"
-                   android:textSize="14sp" />
+                   android:textSize="@dimen/sp_14" />
 
            </LinearLayout>
 
@@ -47,7 +46,7 @@
 
         <LinearLayout
             android:id="@+id/slide"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/item_text"
             android:clipChildren="false"
@@ -55,7 +54,8 @@
 
             <TextView
                 android:id="@+id/zhiding"
-                android:layout_width="80dp"
+                android:visibility="gone"
+                android:layout_width="@dimen/dp_70"
                 android:layout_height="match_parent"
                 android:background="#C8C7CD"
                 android:gravity="center"
@@ -64,16 +64,16 @@
 
             <TextView
                 android:id="@+id/yidu"
-                android:layout_width="80dp"
+                android:layout_width="@dimen/dp_70"
                 android:layout_height="match_parent"
                 android:background="#FF9D00"
                 android:gravity="center"
-                android:text="设为已读"
+                android:text="详情"
                 android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/shanchu"
-                android:layout_width="80dp"
+                android:layout_width="@dimen/dp_70"
                 android:layout_height="match_parent"
                 android:background="#FE3C31"
                 android:gravity="center"
@@ -85,6 +85,7 @@
             android:layout_height="1dp"
             android:background="@color/divider_color"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/dp_5"
             />
     </RelativeLayout>
 

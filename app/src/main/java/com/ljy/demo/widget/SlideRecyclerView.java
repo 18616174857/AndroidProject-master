@@ -9,10 +9,15 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.Scroller;
-
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+/**
+ *    author : Android Liang_liang
+ *    time   : 2020/01/08
+ *    desc   : 单个侧滑删除自定义RecyclerView
+ */
 
 public class SlideRecyclerView extends RecyclerView {
     private static final String TAG = "SlideRecyclerView";

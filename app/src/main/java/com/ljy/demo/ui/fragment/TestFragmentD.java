@@ -23,6 +23,7 @@ import com.ljy.demo.ui.activity.SettingActivity;
 import com.ljy.demo.ui.activity.SlideMoreRecyclerViewActivity;
 import com.ljy.demo.ui.activity.SlideRecyclerViewActivity;
 import com.ljy.demo.ui.activity.StatusActivity;
+import com.ljy.demo.ui.activity.UpLoadImageActivity;
 import com.ljy.demo.ui.activity.ViewPageActivity;
 import com.ljy.demo.ui.activity.WebActivity;
 import com.ljy.demo.ui.dialog.MessageDialog;
@@ -57,7 +58,7 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
 
     }
 
-    @OnClick({R.id.btn_test_dialog, R.id.btn_test_hint, R.id.btn_test_login, R.id.btn_test_register, R.id.btn_test_forget,
+    @OnClick({R.id.btn_test_dialog, R.id.btn_test_hint,R.id.btn_test_up, R.id.btn_test_login, R.id.btn_test_register, R.id.btn_test_forget,
             R.id.btn_test_reset,R.id.btn_test_verify, R.id.btn_test_change, R.id.btn_test_personal, R.id.btn_test_setting,
             R.id.btn_test_about, R.id.btn_test_browser, R.id.btn_test_image, R.id.btn_test_crash, R.id.btn_test_pay,
             R.id.btn_test_RecyclerView, R.id.btn_test_RecyclerView2,R.id.btn_test_RecyclerView3,R.id.btn_test_ListView,
@@ -69,6 +70,9 @@ public final class TestFragmentD extends MyLazyFragment<HomeActivity> {
                 break;
             case R.id.btn_test_hint:
                 startActivity(StatusActivity.class);
+                break;
+            case R.id.btn_test_up:
+                startActivity(UpLoadImageActivity.class);
                 break;
             case R.id.btn_test_login:
                 startActivity(LoginActivity.class);

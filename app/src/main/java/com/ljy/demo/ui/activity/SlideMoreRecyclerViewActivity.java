@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.ljy.demo.R;
 import com.ljy.demo.common.MyActivity;
 import com.ljy.demo.ui.adapter.RecAdapter;
@@ -15,7 +17,11 @@ import java.util.List;
 import butterknife.BindView;
 import cn.we.swipe.helper.WeSwipe;
 import cn.we.swipe.helper.WeSwipeHelper;
-
+/**
+ *    author : Android Liang_liang
+ *    time   : 2020/01/08
+ *    desc   : 侧滑多个菜单RecyclerView使用案例
+ */
 public class SlideMoreRecyclerViewActivity extends MyActivity {
     @BindView(R.id.recycler_view_list)
     RecyclerView recyclerViewList;
@@ -65,15 +71,32 @@ public class SlideMoreRecyclerViewActivity extends MyActivity {
         recyclerViewList.setHasFixedSize(true);
         //解决数据加载完成后, 没有停留在顶部的问题
         recyclerViewList.setFocusable(false);
-        //设置WeSwipe。
+        //侧滑删除一定要设置WeSwipe。
         WeSwipe.attach(recyclerViewList).setType(WeSwipeHelper.SWIPE_ITEM_TYPE_FLOWING);
+        //删除的点击事件。
         adapter.setDelectedItemListener(new RecAdapter.DeletedItemListener() {
             @Override
             public void deleted(int position) {
+
                 adapter.removeDataByPosition(position);
             }
         });
-
+        //置顶的点击事件。
+        adapter.setTopItemListener(new RecAdapter.TopItemListener() {
+            @Override
+            public void top(int position) {
+                Toast.makeText(getActivity(), "我点击了置顶",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        //详情的点击事件。
+        adapter.setDetailsItemListener(new RecAdapter.DetailsItemListener() {
+            @Override
+            public void details(int position) {
+                Toast.makeText(getActivity(), "我点击了详情",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

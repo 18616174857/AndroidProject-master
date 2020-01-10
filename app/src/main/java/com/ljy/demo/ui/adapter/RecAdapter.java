@@ -26,11 +26,10 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewholder> {
     private Context context;
     private List<String> data = new ArrayList<>();
     private LayoutInflater layoutInflater;
-    DeletedItemListener delectedItemListener;
 
-    public void setDelectedItemListener(DeletedItemListener deletedItemListener) {
-        this.delectedItemListener = deletedItemListener;
-    }
+    TopItemListener topItemListener;
+    DetailsItemListener detailsItemListener;
+    DeletedItemListener delectedItemListener;
 
     public RecAdapter(Context context) {
         this.context = context;
@@ -63,23 +62,29 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewholder> {
     @Override
     public void onBindViewHolder(final RecViewholder holder, int position) {
         holder.textView.setText(data.get(holder.getAdapterPosition()));
-        holder.textView.setOnClickListener(new View.OnClickListener() {
+        holder.slideItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "s  " + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                if (null != detailsItemListener) {
+                    detailsItemListener.details(holder.getAdapterPosition());
+                }
             }
         });
 
         holder.zhiding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "置顶" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                if (null != topItemListener) {
+                    topItemListener.top(holder.getAdapterPosition());
+                }
             }
         });
         holder.yidu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "已读" + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                if (null != detailsItemListener) {
+                    detailsItemListener.details(holder.getAdapterPosition());
+                }
             }
         });
         holder.shanchu.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +125,8 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewholder> {
         @Override
         public float getSwipeWidth() {
             //布局隐藏超过父布局的范围的时候这里得不到宽度
-            return dip2px(context, 240);
+            //有几个按钮就设置几个按钮的宽度
+            return dip2px(context, 150);
         }
 
         @Override
@@ -145,10 +151,27 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.RecViewholder> {
         float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+    public interface TopItemListener {
 
+        void top(int position);
+    }
     public interface DeletedItemListener {
 
         void deleted(int position);
     }
+    public interface DetailsItemListener {
 
+        void details(int position);
+    }
+    public void setTopItemListener(TopItemListener topItemListener) {
+        this.topItemListener = topItemListener;
+    }
+
+    public void setDetailsItemListener(DetailsItemListener detailsItemListener) {
+        this.detailsItemListener = detailsItemListener;
+    }
+
+    public void setDelectedItemListener(DeletedItemListener deletedItemListener) {
+        this.delectedItemListener = deletedItemListener;
+    }
 }

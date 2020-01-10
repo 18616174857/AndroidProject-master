@@ -21,6 +21,11 @@ import java.util.Set;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ *    author : Android Liang_liang
+ *    time   : 2020/01/08
+ *    desc   : RecyclerView使用案例
+ */
 public class RecyclerViewActivity extends MyActivity {
 
 
@@ -69,6 +74,7 @@ public class RecyclerViewActivity extends MyActivity {
     private void refreshView() {
         //1,加载空布局文件，便于第五步适配器在没有数据的时候加载
         View emptyView = View.inflate(this, R.layout.empty_view, null);
+
         //2，设置LayoutManager,LinearLayoutManager表示竖直向下
         rvTest.setLayoutManager(new LinearLayoutManager(this));
         //3，初始化一个无数据的适配器
@@ -88,6 +94,7 @@ public class RecyclerViewActivity extends MyActivity {
         rvTest.setAdapter(mTestAdapter);
         //5，给recyclerView设置空布局
         mTestAdapter.setEmptyView(emptyView);
+
         //解决数据加载不完的问题
         rvTest.setNestedScrollingEnabled(false);
         //当知道Adapter内Item的改变不会影响RecyclerView宽高的时候，可以设置为true让RecyclerView避免重新计算大小

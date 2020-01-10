@@ -53,7 +53,7 @@ public final class PhotoActivity extends MyActivity
         BaseRecyclerViewAdapter.OnChildClickListener, Runnable {
 
     public static void start(BaseActivity activity, OnPhotoSelectListener listener) {
-        start(activity, 1, listener);
+        start(activity, 9, listener);
     }
 
     public static void start(BaseActivity activity, int maxSelect, OnPhotoSelectListener listener) {
@@ -88,7 +88,7 @@ public final class PhotoActivity extends MyActivity
     private PhotoAdapter mAdapter;
 
     /** 最大选中 */
-    private int mMaxSelect = 1;
+    private int mMaxSelect = 9;
     /** 选中列表 */
     private final ArrayList<String> mSelectPhoto = new ArrayList<>();
 
